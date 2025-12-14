@@ -47,6 +47,14 @@ No.
 
 No. It's also almost a thousand times slower than `math/rand`; you can test it yourself using `go run cmd/main.go`.
 
+```console
+[mtu@archlap hyrumrand]$ go run cmd/main.go 
+Elapsed time using hyrumrand: 61.5919ms
+Sum using hyrumrand: 365195
+Elapsed time using math/rand: 13.378µs
+Sum using math/rand: 502368
+```
+
 ## But it's random, so I can use it to...
 
 Please don't.
