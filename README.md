@@ -3,6 +3,16 @@
 Generate random integers using the fact that Golang map iteration order is, as
 of 2025-12-13, guranteed to be random.
 
+Snippet from [the runtime/maps.go source](https://go.googlesource.com/go/+/refs/heads/dev.go2go/src/runtime/map.go#831):
+
+```golang
+// decide where to start
+r := uintptr(fastrand())
+if h.B > 31-bucketCntBits {
+    r += uintptr(fastrand()) << 31
+}
+```
+
 ## Why?
 
 [Inspired by this Reddit comment](https://www.reddit.com/r/golang/comments/1plrkq0/comment/ntujtux/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button), which answered the question "Why does Go’s map always give random key/value order under the hood?" with:
